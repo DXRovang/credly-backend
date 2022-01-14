@@ -11,7 +11,7 @@ class HerosController < ApplicationController
 
   private
 
-  def issue_badge
+  def issue_badge1
     form_data = {
       headers: 
       {"Accept": "application/json",
@@ -26,6 +26,21 @@ class HerosController < ApplicationController
 
     request = Net::HTTP:Post.new(url, form_data)
     repsonse = http.request(request)
+  end
+
+  def issue_badge2
+    response = HTTParty.post("https://sandbox-api.youracclaim.com/organizations/#{ORG}/badges",
+              :body => {
+                {"badge_template_id": ENV['BADGE2'],
+                "issued_to_first_name": "Bella",
+                "issued_to_last_name": "the Doberman"}
+              }.to_json,
+              :headers => {
+                {"Accept": "application/json",
+                "Authorization": ENV['AUTH'],
+                "Content-type": "application/json"},
+              }
+            )
   end
 
   def hero_params
