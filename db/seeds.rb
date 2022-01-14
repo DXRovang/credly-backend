@@ -7,7 +7,6 @@ response = RestClient.get(BASE_URL, headers={
 }) 
 hero_array = JSON.parse(response)
 
-
 hero_array.each do |hero|
   Hero.create(
     name: hero['name'],
