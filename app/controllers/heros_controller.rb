@@ -5,6 +5,7 @@ class HerosController < ApplicationController
   end
 
   def show
+    issue_bage2()
     hero = Hero.find_by(id: params[:id])
     render json: hero
   end
@@ -31,14 +32,14 @@ class HerosController < ApplicationController
   def issue_badge2
     response = HTTParty.post("https://sandbox-api.youracclaim.com/organizations/#{ORG}/badges",
               :body => {
-                {"badge_template_id": ENV['BADGE2'],
+                "badge_template_id": ENV['BADGE2'],
                 "issued_to_first_name": "Bella",
-                "issued_to_last_name": "the Doberman"}
+                "issued_to_last_name": "the Doberman"
               }.to_json,
               :headers => {
-                {"Accept": "application/json",
+                "Accept": "application/json",
                 "Authorization": ENV['AUTH'],
-                "Content-type": "application/json"},
+                "Content-type": "application/json"
               }
             )
   end
