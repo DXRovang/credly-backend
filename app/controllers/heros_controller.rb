@@ -5,9 +5,9 @@ class HerosController < ApplicationController
   end
 
   def show
-    issue_bage2()
-    hero = Hero.find_by(id: params[:id])
-    render json: hero
+    # issue_bage2()
+    @hero = Hero.find_by(id: params[:id])
+    render json: @hero
   end
 
   private
