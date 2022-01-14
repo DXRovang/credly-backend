@@ -8,18 +8,17 @@ response = RestClient.get(BASE_URL, headers={
 hero_array = JSON.parse(response)
 
 
-
-binding.pry
-
-# hero_array.each do |hero|
-#   Superhero.create(
-#     name: hero['name'],
-#     gender: hero['gender'],
-#     culture: hero['culture'],
-#     born: hero['born'],
-#     died: hero['died']
-#   )
-# end
+hero_array.each do |hero|
+  Hero.create(
+    name: hero['name'],
+    temperament: hero['temperament'],
+    life_span: hero['life_span'],
+    origin: hero['origin'],
+    bred_for: hero['bred_for'],
+    breed_group: hero['breed_group'],
+    image_url: hero['image']['url']
+  )
+end
 
 
 
